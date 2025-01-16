@@ -12,11 +12,11 @@ app.get("/weather", async(req, res) => {
     const apiKey = process.env.WEATHER_API_KEY;
 
     try {
-        const response = await axios.get();
+        const response = await axios.get(`https://api.openweatherapi.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);;
         res.json(response.data);
     } catch(error) {
         res.status(500).json();
     }
 });
 
-app.listen(PORT, () => console.log(""))
+app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
