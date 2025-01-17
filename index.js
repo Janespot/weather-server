@@ -12,9 +12,10 @@ app.get("/weather", async(req, res) => {
     const apiKey = process.env.WEATHER_API_KEY;
 
     try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);;
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
         res.json(response.data);
     } catch(error) {
+        console.log(error);
         res.status(500).json();
     }
 });
